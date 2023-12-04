@@ -1,0 +1,17 @@
+{
+  "name": "mining_project",
+  "version": "1.0.0",
+  "description": "finding picture and transfer it into visual form",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "kapakino",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^27.1.3"
+  },
+  "dependencies": {
+    "babylonjs": "^6.32.1"
+  }
+}

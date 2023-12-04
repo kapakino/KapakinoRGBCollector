@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    position:relative;
+}
+html{
+    top:0;left:0;width:100%;height: 100%;
+    overflow: scroll;
+}
+body{
+    margin:5px;
+    width:100vh;height:100vh;
+    padding: 1vh;border-radius: 5px;border:2px solid rgb(116, 129, 224)}
+fieldset{
+    width:95vh;
+    height:40vh;
+    border-radius: 5px;
+}
+#container{
+    width:95vh;
+    height: 50vh;
+    border: 2px solid rgb(116, 129, 224);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+canvas{
+    background-color: rgba(0,0,0,1);
+    width:100%;
+    height:100%;
+}
+footer{
+    position:fixed;
+    z-index:1;
+    top:95vh;
+    left:0vh;
+    width:100vh;
+    height:5vh;
+    margin-top: 2vh;
+    background-color: rgba(0,0,0,0.3);
+}
