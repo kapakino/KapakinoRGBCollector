@@ -4,9 +4,12 @@ const path = require('node:path')
 function createWindow(){
     const win = new BrowserWindow({
         width:800,
-        height:1024
+        height:1024,
+        webPreferences:{
+            preload: path.join(`${__dirname}/js`,'preload.js')
+        }
     })
-    win.loadFile('./home.html')
+    win.loadFile(path.join(__dirname,'home.html'))
 };
 app.whenReady().then(()=>{
     createWindow()
