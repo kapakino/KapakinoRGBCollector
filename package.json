@@ -4,7 +4,8 @@
   "description": "finding picture and transfer it into visual form",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "test": "nodemon index.js",
+    "start": "electron ."
   },
   "author": "kapakino",
   "license": "ISC",
