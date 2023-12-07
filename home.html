@@ -9,17 +9,27 @@
     <title>RGB collector</title>
 </head>
 <body>
-    <form action="">
-        <fieldset id="outter">
-            <legend id="heading">tag for input</legend>
-            <label for="keyword">keyword(delimiter with space)<br/>
-            <textarea name="keyword" id="keyword" cols="30" rows="10"></textarea></label><br/>
-            <label for="website">website for mining<br/>
-            <input type="text" name="website"/><br/>
-            </label>
-            <input type="submit" value="submit"/>
-        </fieldset>
-    </form>
+    <div id="dynamic">
+        <form id="keyword" action="" method="post">
+            <fieldset id="outter_keyword">
+                <legend class="heading">keyword input</legend>
+                <label for="keyword">keyword(delimiter with comma)<br/>
+                <textarea name="keyword" id="keyword" cols="30" rows="10"></textarea></label><br/>
+                <label for="website">website for mining<br/>
+                <input type="text" name="website"/><br/>
+                </label>
+                <input type="submit" value="submit"/>
+            </fieldset>
+        </form>
+        <form id="variable" action="" method="post">
+            <fieldset id="outter_variable">
+                <legend class="heading">variable adjust</legend>
+                <label for="data">Data to compare(Enter a number)<br/>
+                <input name="data" type="text"></label><br/>
+                <input type="submit" value="submit"/>
+            </fieldset>
+        </form>
+    </div>
     <div id="container">
         <canvas id="main"></canvas>
     </div>
