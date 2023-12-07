@@ -10,7 +10,7 @@ def collect(path:str):
             pixels.append(im.getpixel((j,i)))
     return pixels,width,height
 if __name__ == '__main__':
-    #this collect the collor not white
+    #this collect the collect not white
     test,_,_ = collect('../test/test.jpg')
     for it in test:
         if it==(255,255,255):
