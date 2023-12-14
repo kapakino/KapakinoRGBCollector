@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        var supportsES6 = function() {
+            try {
+                new Function("(a = 0) => a");
+                return true;
+            }
+            catch (err) {
+                return false;
+            }
+        };
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
-    <script src="js/script.js"></script>
+    <script>
+        var babylon_scr_1 = document.createElement('script');
+        babylon_scr_1.type = 'text/javascript'
+        if(supportsES6){
+            babylon_scr_1.src = './js/script.js';
+        }else{
+            babylon_scr_1.src = './dist/script.js';
+        }
+        document.head.appendChild(babylon_scr_1);
+    </script>
     <title>RGB collector</title>
 </head>
 <body>
+    <noscript>you need js to run this program</noscript>
     <div id="upper">
         <div id="dynamic">
-            <form onsubmit="">
+            <!-- <form onsubmit="">
                 <fieldset id="outter_keyword">
                     <legend class="heading">keyword input</legend>
                     <label for="keyword">keyword(delimiter with comma)<br/>
@@ -29,7 +50,7 @@
                     <input name="data" type="text"></label><br/>
                     <input type="submit" value="submit"/>
                 </fieldset>
-            </form>
+            </form> -->
         </div>     
     </div>
     <div id="container">
@@ -38,5 +59,24 @@
     <footer>
         <p>&copy;kapakino &amp; imagine friends</p>
     </footer>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script>
+        var scr1 = document.createElement('script');
+        var scr2 = document.createElement('script');
+        if(supportsES6){
+            scr1.src = './js/upper.jsx';
+            scr2.src = './js/control.jsx';
+            scr1.type = 'text/jsx';
+            scr2.type = 'text/jsx';
+        }else{
+            scr1.src = './dist/upper.js';
+            scr2.src = './dist/control.js';
+            scr1.type = 'text/javascript';
+            scr2.type = 'text/javascript';
+        }
+        document.body.appendChild(scr1);
+        document.body.appendChild(scr2);
+    </script>
 </body>
 </html>
