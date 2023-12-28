@@ -1,7 +1,10 @@
 "use strict";
 
+var _control = _interopRequireDefault(require("./control.js"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 try {
   document.addEventListener("DOMContentLoaded", function () {
+    console.log("script be called");
     var canvas = document.getElementById("main");
     var engine = new BABYLON.Engine(canvas, true);
     var scene = new BABYLON.Scene(engine);
@@ -17,6 +20,9 @@ try {
 
     // Move the sphere upward 1/2 its height
     sphere.position.y = 1;
+
+    //add additional event listener
+    (0, _control["default"])();
     engine.runRenderLoop(function () {
       scene.render();
     });
