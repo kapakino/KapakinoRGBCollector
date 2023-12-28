@@ -1,5 +1,8 @@
+"use strict";
+import Control from './control.js';
 try{
     document.addEventListener("DOMContentLoaded",function(){
+        console.log("script be called")
         var canvas = document.getElementById("main");
         var engine = new BABYLON.Engine(canvas, true);
         const scene = new BABYLON.Scene(engine);
@@ -16,7 +19,9 @@ try{
         // Move the sphere upward 1/2 its height
         sphere.position.y = 1;
         
-        
+        //add additional event listener
+        Control();
+
         engine.runRenderLoop(function () {
             scene.render();
         });
