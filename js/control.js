@@ -1,6 +1,6 @@
 "use strict";
 export default function Control(){
-    console.log("Control Entered!");
+    // console.log("Control Entered!");
     var option = document.getElementById('option');
     var start = document.getElementById('start');
 
@@ -51,5 +51,26 @@ export default function Control(){
     });
     display.addEventListener('mouseleave',(e)=>{
         document.documentElement.style.overflowY = 'scroll';
+    });
+
+    //add Color button
+    var color_idx = 1;
+    var createColorButton = document.getElementById('createColor');
+    var insertColorElement = document.getElementById('colorInsertPoint');
+    createColorButton.addEventListener('click',(e)=>{
+        if(color_idx>=4)return;
+        var newElement = document.createElement('input');
+        newElement.type = 'color';
+        newElement.name = `color${color_idx}`; 
+        newElement.id = `color${color_idx}`;
+        ++color_idx;
+        insertColorElement.appendChild(newElement);
+    });
+    var deleteColorButton = document.getElementById('deleteColor');
+    deleteColorButton.addEventListener('click',(e)=>{
+        if(color_idx==1)return;
+        --color_idx;
+        var element = document.getElementById(`color${color_idx}`);
+        insertColorElement.removeChild(element);
     });
 }
