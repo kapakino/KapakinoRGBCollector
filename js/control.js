@@ -1,4 +1,6 @@
 "use strict";
+import ResultBlock from "./resultControl.js";
+var color_idx = 1;
 export default function Control(){
     // console.log("Control Entered!");
     var option = document.getElementById('option');
@@ -36,11 +38,14 @@ export default function Control(){
             let nxt = cur.children;
             queue.push(...nxt);
         }
-        console.log(default_option)
+        // console.log(default_option)
 
         var json = JSON.stringify(default_option);
         localStorage.setItem('setting',json);
         // console.log(localStorage.getItem('setting'))
+
+        //there should be no used of this variable, it will handle the logic itself
+        var showResult = new ResultBlock();
     })
 
     //control the screen
@@ -54,7 +59,6 @@ export default function Control(){
     });
 
     //add Color button
-    var color_idx = 1;
     var createColorButton = document.getElementById('createColor');
     var insertColorElement = document.getElementById('colorInsertPoint');
     createColorButton.addEventListener('click',(e)=>{

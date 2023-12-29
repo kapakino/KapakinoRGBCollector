@@ -147,3 +147,17 @@ button{
     height:20px;
     border-radius:5px;
 }
+
+/* ./reminder/convertedHtml.html */
+#result,#visual{
+    width:40vw;
+    height:45vh;
+    margin:5px;
+    padding: 5px;
+    border:2px solid rgb(116, 129, 224);
+}
+#goBack{
+    width:80px;
+    height: 20px;
+    border-radius: 5px;
+}
