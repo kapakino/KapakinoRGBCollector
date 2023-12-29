@@ -33,7 +33,7 @@ export default function Control(){
         let queue = [...arr];
         while(queue.length!==0){
             let cur = queue.shift();
-            if(cur.hasAttribute('name')&&cur.nodeType===1)
+            if(cur.hasAttribute('name')&&cur.nodeType===1&&cur.value!=='')
                 default_option[cur.name] = cur.value;
             let nxt = cur.children;
             queue.push(...nxt);
@@ -41,11 +41,11 @@ export default function Control(){
         // console.log(default_option)
 
         var json = JSON.stringify(default_option);
-        localStorage.setItem('setting',json);
+        // localStorage.setItem('setting',json);
         // console.log(localStorage.getItem('setting'))
 
         //there should be no used of this variable, it will handle the logic itself
-        var showResult = new ResultBlock();
+        var showResult = new ResultBlock(json);
     })
 
     //control the screen

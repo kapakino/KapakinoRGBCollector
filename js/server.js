@@ -10,10 +10,18 @@ const port = 8080;
 
 //using cors
 app.use(cors());
+//middleware
+app.use(express.json())
 app.use(express.static(__dirname));
 
 app.post('/running',(req,res)=>{
-    exec(`python ${__dirname}\\..\\py\\control.py`,(error,stdout,stderr)=>{
+    const dataToSent = req.body;
+    console.log(dataToSent)
+    var arr = '';
+    for(let key of Object.keys(dataToSent)){
+        arr += `${key}=${dataToSent[key]} `;
+    }
+    exec(`python ${__dirname}\\..\\py\\control.py ${arr}`,(error,stdout,stderr)=>{
         if(error){
             console.error('Error executing Python script:', error);
             console.error('stderr:', stderr);

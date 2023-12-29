@@ -1,9 +1,10 @@
 import Control from "./control.js";
 export default class ResultBlock{
-    constructor(){
+    constructor(json){
         this.insertPoint = document.getElementById('dynamic');
         this.tempHtml = this.insertPoint.innerHTML;
         this.port = 8080;
+        this.json = json;
         this.change();
     }
     change(){
@@ -23,11 +24,13 @@ export default class ResultBlock{
         })
     }
     handlePythonData(){
+        // console.log(this.json)
         fetch(`http://localhost:${this.port}/running`,{
             method:'POST',
             headers:{
-                'content-Type':'application/json'
-            }
+                'Content-Type':'application/json'
+            },
+            body:this.json
         })
         .then(res=>{
             if(!res.ok){
