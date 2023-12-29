@@ -12,7 +12,10 @@
                 return false;
             }
         };
+        //babel can't be used on babylon
         if(!supportsES6)alert('You may need newer browser to run this program!');
+        if(!navigator.onLine)alert('You may need to connect to internet...(I don\'t even know how you get this message)')
+        if(!navigator.platform.includes('Win'))alert('This program doesn\'t support platform except windows(you can still try if there is any error, roport to my github)')
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

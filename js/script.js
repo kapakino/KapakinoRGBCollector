@@ -2,7 +2,7 @@
 import Control from './control.js';
 try{
     document.addEventListener("DOMContentLoaded",function(){
-        console.log("script be called")
+        // console.log("script be called")
         var canvas = document.getElementById("main");
         var engine = new BABYLON.Engine(canvas, true);
         const scene = new BABYLON.Scene(engine);

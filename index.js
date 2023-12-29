@@ -6,7 +6,9 @@ function createWindow(){
         width:800,
         height:1024,
         webPreferences:{
-            preload: path.join(`${__dirname}/js`,'preload.js')
+            preload: path.join(`${__dirname}/js`,'preload.js'),
+            // to enable cors
+            webSecurity: false
         }
     })
     // win.loadURL('http://localhost:8080')
