@@ -13,8 +13,10 @@ def main():
     handleData = middleware.Connection(data)
     sys.stdout = sys.__stdout__
     res = handleData.getData()
+    ans = ''
     for it in res:
-        print(it,' ',res[it])
-
+        ans += f'{it}={res[it]},'
+    ans = ans[:-1]
+    print('PythonOutput:',ans)
 if __name__=='__main__':
     main()
