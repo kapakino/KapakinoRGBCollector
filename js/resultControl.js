@@ -12,7 +12,9 @@ export default class ResultBlock{
         <!-- ./reminder/convertedHtml -->
         <div id="result">
             <button type="button" id="goBack">Go Back</button>
-            <div id="output"></div>
+            <div id="output">
+                <div id="loadMessage">Loading...</div>
+            </div>
         </div>
         <div id="visual">
             <p>This feature still didn't be implied</p>
@@ -43,7 +45,10 @@ export default class ResultBlock{
             var res = document.getElementById('output');
             res.innerHTML = data.output;
         })
-        .catch(err=>console.error(`Error:${err}`))
+        .catch(err=>{
+            alert(`Error:${err}`)
+            console.error(`Error:${err}`)
+        })
     }
     GoBackHandler(){
         this.cleanUp();

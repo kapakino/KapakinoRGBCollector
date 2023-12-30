@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
-COUNT = 100
+
 
 #command to run ...
 #scrapy crawl pinterest -a keyword=""
@@ -22,8 +22,12 @@ class PinterestSpider(scrapy.Spider):
         chrome_options.add_argument('--headless')
         self.driver = webdriver.Chrome(options=chrome_options)
         # self.driver = webdriver.Chrome()
+        #default data number to retrieve
+        self.TotalAccessData = 10
     def start_requests(self):
         keyword = getattr(self,'keyword',None)
+        data = getattr(self,'data',None)
+        if data!=None and data.isdigit(): self.TotalAccessData = int(data)
         url = f'https://www.pinterest.jp/search/pins/?q={keyword}'
         yield scrapy.Request(url=url,callback=self.parse)
     def parse(self,response):
@@ -32,7 +36,7 @@ class PinterestSpider(scrapy.Spider):
         idx = 0
         with open('output.json','w',encoding='utf-8') as pinterest:
             pinterest.write('[')
-            while idx<COUNT:
+            while idx<self.TotalAccessData:
                 try:
                     WebDriverWait(self.driver, timeout=20).until(lambda d: d.execute_script("return document.readyState") == "complete")
                 except Exception as e:
@@ -44,7 +48,7 @@ class PinterestSpider(scrapy.Spider):
                         'url': content.get()
                     },pinterest,ensure_ascii=False)
                     idx += 1
-                    if idx<=COUNT-1:   pinterest.write(',\n')
+                    if idx<=self.TotalAccessData-1:   pinterest.write(',\n')
                     else:   break
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 time.sleep(0.1)

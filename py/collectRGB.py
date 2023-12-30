@@ -1,18 +1,17 @@
 from PIL import Image
+import requests
+from io import BytesIO
 
-def collect(path:str):
-    im = Image.open(f'{path}','r')
-    if im.mode != 'RGB':    im.convert('RGB')
-    width,height = im.size
-    pixels = []
-    for i in range(height):
-        for j in range(width):
-            pixels.append(im.getpixel((j,i)))
-    return pixels,width,height
+def collect(pathUrl:str):
+    res = requests.get(pathUrl)
+    if res.status_code==200:
+        img = Image.open(BytesIO(res.content))
+        return list(img.getdata())
+    else:
+        print('python:Network Error when fetching picture')
+        return None
 if __name__ == '__main__':
-    #this collect the collect not white
-    test,_,_ = collect('../test/test.jpg')
-    for it in test:
-        if it==(255,255,255):
-            pass
-        else: print(it)
+    path = 'https://i.pinimg.com/236x/5c/e6/a4/5ce6a4fc5a3ef4f5e052ca58aa71cb1c.jpg'
+    test = collect(path)
+    if test!=None:  print(test)
+    print(type(test[0]))
