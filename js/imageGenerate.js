@@ -43,22 +43,23 @@ class ImgControl{
         for(let it of tempArray){
             let [key,val] = it.split('=');
             if(!this.#checkRGBFormat(key))continue;
-            var tmp = this.#rgbStringToJimpForm(key);
-            if(tmp!==undefined)this.colorArray.push([...tmp]);
-            if(Number(val)!==null)this.totalSpot += Number(val);
+            var num = Number(val);
+            if(!isNaN(num)){
+                this.totalSpot += num;
+                var tmp = this.#rgbStringToJimpForm(key);
+                if(tmp!==undefined){
+                    for(let i =0;i<num;++i){
+                        this.colorArray.push([...tmp]);
+                    }
+                }
+            }
         }
         this.#randomArrange();
         this.#convertWidthHeight();
     }
     #convertWidthHeight(){
-        var point = Math.sqrt(this.totalSpot),start = parseInt(point);
-        for(;start>=1;--start){
-            if(this.totalSpot%start===0){
-                this.width = start;
-                this.height = parseInt(this.totalSpot/start);
-                break;
-            }
-        }
+        var largest = Math.floor(Math.sqrt(this.totalSpot));
+        this.height = this.width = largest;       
     }
     #rgbStringToJimpForm(rgbString) {
         var [,r,g,b] = rgbString.match(/\((\d+), (\d+), (\d+)\)/) || [];

@@ -1,5 +1,13 @@
 "use strict";
 import Control from './control.js';
+
+function updateTexture(sphereMaterial){
+    if (sphereMaterial.diffuseTexture) {
+        sphereMaterial.diffuseTexture.dispose();
+    }  
+    sphereMaterial.diffuseTexture = new BABYLON.Texture('./js/image/output.jpg',sphereMaterial.getScene());
+}
+
 try{
     document.addEventListener("DOMContentLoaded",function(){
         // console.log("script be called")
@@ -14,16 +22,18 @@ try{
         
         // const box = BABYLON.MeshBuilder.CreateBox("box", {}, scene);
         // Our built-in 'sphere' shape.
-        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 128}, scene);
         
         // Move the sphere upward 1/2 its height
         sphere.position.y = 1;
         
         //handle the sphere
-        const sphereMaterial = new BABYLON.StandardMaterial();
+        const sphereMaterial = new BABYLON.StandardMaterial("sphereMaterial", scene);
         sphere.material = sphereMaterial;
-        sphereMaterial.diffuseColor = new BABYLON.Color3(0,1,0)
-
+        // sphereMaterial.diffuseColor = new BABYLON.Color3(0,1,0);
+        sphereMaterial.specularColor = new BABYLON.Color3(0.2,0,0);
+        updateTexture(sphereMaterial);
+        setInterval(()=>updateTexture(sphereMaterial),10000);
         //add additional event listener
         Control();
 

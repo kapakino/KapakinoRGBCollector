@@ -8,7 +8,7 @@ const exec = util.promisify(require('child_process').exec);
 //with cors to access different domain
 const cors = require('cors');
 // const path = require('node:path');
-// const fs = require('fs')
+const fs = require('fs')
 
 const ImgControl = require('./imageGenerate.js');
 
@@ -46,6 +46,10 @@ app.post('/running',async (req,res)=>{
         process.chdir(`${__dirname}\\..\\py`);
         res.on('finish',()=>{
             process.chdir(cur_dir);
+            //delete the file
+            fs.unlink(`${__dirname}\\image\\output.jpg`,(error)=>{
+                if(error)console.error(`${error}`);
+            });
             setTimeout(()=>{
                 console.log('executing')
                 imageData.generateImg()
