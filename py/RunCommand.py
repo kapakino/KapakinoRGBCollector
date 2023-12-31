@@ -14,7 +14,7 @@ def runningScrapy(web:str,keyWord:str,data:int=-1):
     try:
         os.chdir(FILE.resolve())
         cmd = f'scrapy crawl {web} -a keyword="{keyWord}"'
-        if(data!=-1):  cmd += f' -a data="{data}"'
+        if(data!=-1):  cmd += f' -a data={int(data)}'
         # print(cmd)
         #redirect the output to devnull
         #If there is unexpected error may happened in here

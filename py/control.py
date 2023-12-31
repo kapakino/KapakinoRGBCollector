@@ -15,7 +15,7 @@ def main():
     res = handleData.getData()
     ans = ''
     for it in res:
-        ans += f'{it}={res[it]},'
+        ans += f'{it}={res[it]}!'
     ans = ans[:-1]
     print('PythonOutput:',ans)
 if __name__=='__main__':

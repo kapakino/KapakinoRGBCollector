@@ -32,6 +32,7 @@ app.post('/running',async (req,res)=>{
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     const dataToSent = req.body;
+    if('data' in dataToSent)dataToSent['data'] = parseInt(dataToSent['data']);
     console.log(dataToSent)
     var arr = '';
     for(let key of Object.keys(dataToSent)){

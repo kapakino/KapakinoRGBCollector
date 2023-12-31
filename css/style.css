@@ -156,7 +156,7 @@ button{
     padding: 5px;
     border:2px solid rgb(116, 129, 224);
 }
-#goBack{
+#goBack,#GenerateNext{
     width:80px;
     height: 20px;
     border-radius: 5px;
@@ -167,6 +167,7 @@ button{
     width:90%;
     height: 80%;
     overflow-y: scroll;
+    overflow-x: hidden;
     border: 2px solid rgb(116, 129, 224);
     background-color: rgba(255,255,255,0.7);
     border-radius: 10px;
@@ -175,11 +176,16 @@ button{
 #output:hover{
     background-color: rgba(0,0,0,0.1);
 }
+#output *{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 #loadMessage{
-    color:rgb(112, 88, 61);
     display: flex;
     align-items: center;
     justify-content: center;
+    color:rgb(112, 88, 61);
     animation: loadMessageChange alternate infinite 10s;
 }
 @keyframes loadMessageChange{
@@ -190,3 +196,16 @@ button{
         color:rgb(150, 133, 112);
     }
 }
+.addedColorDiv{
+    margin-top: 10px;
+    width:80%;
+    height:25%;
+    border:2px solid rgb(116, 129, 224);
+    background-color: rgba(35, 36, 53,0.8);
+    color:#f1f1f1;
+    border-radius: 5px;
+    text-align: center;
+}
+/* .addedColorDiv:hover{
+    background-color: rgba(35, 36, 53,0.9);
+} */
