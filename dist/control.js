@@ -54,18 +54,18 @@ function Control() {
     var queue = _toConsumableArray(arr);
     while (queue.length !== 0) {
       var cur = queue.shift();
-      if (cur.hasAttribute('name') && cur.nodeType === 1) default_option[cur.name] = cur.value;
+      if (cur.hasAttribute('name') && cur.nodeType === 1 && cur.value !== '') default_option[cur.name] = cur.value;
       var nxt = cur.children;
       queue.push.apply(queue, _toConsumableArray(nxt));
     }
     // console.log(default_option)
 
     var json = JSON.stringify(default_option);
-    localStorage.setItem('setting', json);
+    // localStorage.setItem('setting',json);
     // console.log(localStorage.getItem('setting'))
 
     //there should be no used of this variable, it will handle the logic itself
-    var showResult = new _resultControl["default"]();
+    var showResult = new _resultControl["default"](json);
   });
 
   //control the screen
