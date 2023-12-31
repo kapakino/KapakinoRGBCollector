@@ -10,6 +10,8 @@ const cors = require('cors');
 // const path = require('node:path');
 // const fs = require('fs')
 
+const ImgControl = require('./imageGenerate.js');
+
 const app = express();
 const port = 8080;
 
@@ -39,25 +41,37 @@ app.post('/running',async (req,res)=>{
         arr += `${key}=${dataToSent[key]} `;
     }
     try{
+        var imageData = undefined;
         var cur_dir = __dirname;
         process.chdir(`${__dirname}\\..\\py`);
+        res.on('finish',()=>{
+            process.chdir(cur_dir);
+            setTimeout(()=>{
+                console.log('executing')
+                imageData.generateImg()
+                .then((res)=>{console.log('image be generated')})
+                .catch((error)=>{throw new Error(`${error}`)});
+            },100);
+        });
         await exec(`python control.py ${arr}`,{maxBuffer},(error,stdout,stderr)=>{
             if(error){
-                console.error('Error executing Python script:', error);
-                console.error('stderr:', stderr);
                 res.status(500).json({'error':error.message});
+                throw new Error(`Can't execute python script
+                error: ${error}
+                stderr:${stderr}`);
             }else{
                 var idx = stdout.indexOf('PythonOutput:');
                 if(idx===-1)throw new Error('Can\'t read the output data');
                 //PythonOutput: has 13 characters
                 var data = stdout.split('').slice(idx+13).join('');
-                console.log(data)
+                // console.log(data);
+                imageData = new ImgControl(data);
+                
                 res.json({'output':data});
             }
         });
-        process.chdir(cur_dir);
     }catch(error){
-        console.log(`Error when change directory.${error}`)
+        console.log(`Error:${error}`)
     }
 })
 
