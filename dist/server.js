@@ -15,17 +15,17 @@ var cors = require('cors');
 // const path = require('node:path');
 var fs = require('fs');
 var ImgControl = require('./imageGenerate.js');
-var app = express();
+var expressApplication = express();
 var port = 8080;
 
 //10MB
 var maxBuffer = 10 * 1024 * 1024;
 //using cors
-app.use(cors());
+expressApplication.use(cors());
 //middleware
-app.use(express.json());
-app.use(express["static"](__dirname));
-app.post('/running', /*#__PURE__*/function () {
+expressApplication.use(express.json());
+expressApplication.use(express["static"](__dirname));
+expressApplication.post('/running', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
     var allowedOrigins, origin, dataToSent, arr, _i, _Object$keys, key, imageData, cur_dir;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -104,6 +104,6 @@ app.post('/running', /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }());
-app.listen(port, function () {
+expressApplication.listen(port, function () {
   return console.log('listening');
 });

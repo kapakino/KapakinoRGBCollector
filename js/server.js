@@ -12,18 +12,19 @@ const fs = require('fs')
 
 const ImgControl = require('./imageGenerate.js');
 
-const app = express();
+
+const expressApplication = express();
 const port = 8080;
 
 //10MB
 const maxBuffer = 10*1024*1024;
 //using cors
-app.use(cors());
+expressApplication.use(cors());
 //middleware
-app.use(express.json())
-app.use(express.static(__dirname));
+expressApplication.use(express.json())
+expressApplication.use(express.static(__dirname));
 
-app.post('/running',async (req,res)=>{
+expressApplication.post('/running',async (req,res)=>{
     // Add appropriate CORS headers
     const allowedOrigins = ['http://localhost', 'https://localhost','http://127.0.0.1:8080','https://127.0.0.1:8080'];
     const origin = req.get('origin');
@@ -79,4 +80,4 @@ app.post('/running',async (req,res)=>{
     }
 })
 
-app.listen(port,()=>console.log('listening'))
+expressApplication.listen(port,()=>console.log('listening'))
