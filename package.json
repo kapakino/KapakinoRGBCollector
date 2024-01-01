@@ -8,8 +8,8 @@
     "live-server": "live-server --port=8080 --open=/home.html",
     "server": "node .\\js\\server.js",
     "babel-win": ".\\node_modules\\.bin\\babel js -d dist",
-    "build": "electron-packager . kapakinoRGBCollector --platform=win32 --arch=x64 --out=win32 --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"linux\" --overwrite",
-    "build-linux":"electron-packager . kapakinoRGBCollector --platform=linux --arch=x64 --out=linux --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"win32\"  --overwrite"
+    "build": "electron-packager . kapakinoRGBCollector --platform=win32 --arch=x64 --out=win32 --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"linux\" --ignore=\"explain\" --overwrite",
+    "build-linux":"electron-packager . kapakinoRGBCollector --platform=linux --arch=x64 --out=linux --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"win32\" --ignore=\"explain\" --overwrite"
   },
   "author": "kapakino",
   "license": "ISC",
