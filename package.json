@@ -8,8 +8,9 @@
     "live-server": "live-server --port=8080 --open=/home.html",
     "server": "node .\\js\\server.js",
     "babel-win": ".\\node_modules\\.bin\\babel js -d dist",
-    "build": "electron-packager . kapakinoRGBCollector --platform=win32 --arch=x64 --out=win32 --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"linux\" --ignore=\"explain\" --overwrite",
-    "build-linux":"electron-packager . kapakinoRGBCollector --platform=linux --arch=x64 --out=linux --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"win32\" --ignore=\"explain\" --overwrite"
+    "build": "electron-packager . kapakinoRGBCollector --platform=win32 --arch=x64 --out=win32 --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"linux\" --ignore=\"explain\" --ignore=\"workflows_test\" --overwrite",
+    "build-linux": "electron-packager . kapakinoRGBCollector --platform=linux --arch=x64 --out=linux --ignore=\".gitignore\" --ignore=\"node_modules\" --ignore=\"dist\" --ignore=\"test\" --ignore=\"win32\" --ignore=\"explain\" --ignore=\"workflows_test\" --overwrite",
+    "test": "npx mocha .\\workflows_test\\test.mjs"
   },
   "author": "kapakino",
   "license": "ISC",
@@ -25,8 +26,10 @@
     "@babel/preset-react": "^7.23.3",
     "babel-loader": "^9.1.3",
     "babylonjs": "^6.32.1",
+    "chai": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "jimp": "^0.22.10"
+    "jimp": "^0.22.10",
+    "mocha": "^10.2.0"
   }
 }

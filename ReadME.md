@@ -11,6 +11,7 @@
 <img src="explain/interface.png" alt="Explain Picture"/>
 <p>Enter the keyword and choice the website that you want to scramp.</p>
 <p>(In this version only provide Pinterest.)</p>
+<p>(The 'Data to compare' column mean how many picture you wnat to retrieve.)</p>
 <h1>Author Info:</h1>
     <p>Hello! I'm kapakino. I'm interested in web development and also operating system design or control system design.</p>
     <p>you can come check out my leetcode:<a href="https://leetcode.com/kapakino/">myLeetCode</a></p>
