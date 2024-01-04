@@ -35,7 +35,7 @@ const callServer= ()=>{
     isPortInUse(serverPort)
     .then((inUse)=>{
         if(!inUse){
-            serverProcess = spawn('node', ['.\\js\\server.js']);
+            serverProcess = spawn('node', [path.join(__dirname,'js','server.js')]);
             serverProcess.on('error', (err) => {
                 console.error(`Error: ${err.message}`);
             });
@@ -64,7 +64,7 @@ function createWindow(){
         width:800,
         height:1024,
         webPreferences:{
-            preload: path.join(`${__dirname}/js`,'preload.js'),
+            preload: path.join(`${__dirname}`,'js','preload.js'),
             // to enable cors
             webSecurity: false
         }

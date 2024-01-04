@@ -10,7 +10,7 @@ if %errorlevel% neq 0 (
 )
 
 echo install dependency...
-npm install
+call npm install
 
 echo install python...
 where python >nul 2>nul
@@ -21,8 +21,8 @@ if %errorlevel% neq 0 (
 )
 
 echo installing python module
-pip install scrapy
-pip install selenium
+call pip install scrapy
+call pip install selenium
 
 
 echo making output folder win32...

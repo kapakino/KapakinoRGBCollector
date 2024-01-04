@@ -3,13 +3,14 @@ const express = require('express');
 // const {exec} = require('child_process');
 
 //allow to use await keyword
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+// const util = require('util');
+// const exec = util.promisify(require('child_process').exec);
 const spawn = require('child_process').spawn;
 //with cors to access different domain
 const cors = require('cors');
 // const path = require('node:path');
 const fs = require('fs')
+const path = require('node:path');
 
 const ImgControl = require('./imageGenerate.js');
 
@@ -22,7 +23,7 @@ var cmdProcess = undefined;
 var linuxProcess = undefined;
 
 //10MB
-const maxBuffer = 10*1024*1024;
+// const maxBuffer = 10*1024*1024;
 //using cors
 expressApplication.use(cors());
 //middleware
@@ -53,7 +54,7 @@ expressApplication.post('/running',async (req,res)=>{
         res.on('finish',()=>{
             // process.chdir(cur_dir);
             //delete the file
-            fs.unlink(`${__dirname}\\image\\output.jpg`,(error)=>{
+            fs.unlink(path.join(__dirname,'image','output.jpg'),(error)=>{
                 if(error)console.error(`${error}`);
             });
             setTimeout(()=>{

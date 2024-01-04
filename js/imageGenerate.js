@@ -1,5 +1,6 @@
 "use strict";
 const Jimp = require('jimp');
+const path = require('node:path');
 
 
 class ImgControl{
@@ -90,7 +91,7 @@ class ImgControl{
                             image.setPixelColor(tmp,i,j);
                         }
                     }
-                    image.write('.\\image\\output.jpg',(err)=>{
+                    image.write(path.join(__dirname,'image','output.jpg'),(err)=>{
                         if(err)console.error(`${err}`);
                         console.log('Image created and saved as output.jpg');
                     })
