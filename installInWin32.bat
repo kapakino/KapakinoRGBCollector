@@ -12,6 +12,19 @@ if %errorlevel% neq 0 (
 echo install dependency...
 npm install
 
+echo install python...
+where python >nul 2>nul
+if %errorlevel% neq 0 (
+    echo Error: Python didn't installed
+    pause
+    exit
+)
+
+echo installing python module
+pip install scrapy
+pip install selenium
+
+
 echo making output folder win32...
 mkdir win32
 

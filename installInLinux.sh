@@ -15,6 +15,19 @@ else
     fi
 fi
 
+if command -v python > /dev/null; then
+    echo "python is installed"
+else
+    read -p "Python isn't installed. DO you want to install it? (y/n)" install
+    if ["$install"=='y'] then
+        echo "installing python"
+        sudo apt-get update
+        sudo apt-get install python
+fi
+
+pip install scrapy
+pip install selenium
+
 echo "Now installing dependency of project"
 npm install
 echo "Now create the folder for linux"
