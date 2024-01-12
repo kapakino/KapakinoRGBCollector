@@ -15,18 +15,22 @@ else
     fi
 fi
 
-if command -v python > /dev/null; then
+if command -v pip > /dev/null 2>&1; then
     echo "python is installed"
 else
     read -p "Python isn't installed. DO you want to install it? (y/n)" install
-    if ["$install"=='y'] then
+    if ["$install" == 'y']; then
         echo "installing python"
         sudo apt-get update
-        sudo apt-get install python
+        # sudo apt-get install python
+        sudo apt-get install -y python3-pip
+    fi
 fi
 
 pip install scrapy
 pip install selenium
+pip install Pillow
+pip install requests
 
 echo "Now installing dependency of project"
 npm install

@@ -23,6 +23,8 @@ if %errorlevel% neq 0 (
 echo installing python module
 call pip install scrapy
 call pip install selenium
+call pip install Pillow
+call pip install requests
 
 
 echo making output folder win32...
